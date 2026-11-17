@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Feliz Cumpleaños!</title>
+    <title>Invitación de Cumpleaños</title>
     
 <!-- Importación de Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -43,7 +43,6 @@
             z-index: 10;
         }
 
-        /* Modificación para usar la imagen externa */
         .bouquet-image-container img {
             width: 100%;
             height: auto;
@@ -86,8 +85,8 @@
 
         .message-box p {
             font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            line-height: 1.4;
+            font-size: 0.95rem;
+            line-height: 1.5;
             color: #4a4a4a;
         }
 
@@ -100,9 +99,9 @@
         }
 
         /* --- Estilos para el Pastel de Cumpleaños --- */
-        #cake-container {
+      #cake-container {
             position: absolute;
-            top: 40%; /* Ajuste aquí: Movido el pastel más arriba para dejar espacio al mensaje */
+            top: 50%; /* <--- ¡Este es el parámetro que debes cambiar! */
             left: 50%;
             transform: translateX(-50%) scale(0) rotateY(180deg);
             opacity: 0;
@@ -215,7 +214,7 @@
         .layer-2-built #cake-layer-2 { transform: scale(1); }
         .frosting-built #cake-frosting { transform: scale(1); }
         
-        /* --- Animación de Globos y Confeti/Fuegos artificiales (Mismo código) --- */
+        /* --- Animación de Globos --- */
         .balloon {
             position: fixed;
             width: 60px;
@@ -226,8 +225,6 @@
             animation: floatUp var(--balloon-duration) linear forwards; 
             z-index: 5; 
         }
-        
-        .balloon[style*="--balloon-duration"] { }
 
         .balloon::before { 
             content: '';
@@ -267,7 +264,7 @@
             100% { transform: translateX(-50%) rotate(2deg); }
         }
 
-        /* Estilo para la pantalla de inicio con botón de música */
+        /* Pantalla de inicio */
         #start-screen {
             position: fixed;
             top: 0;
@@ -282,53 +279,68 @@
             z-index: 100;
             transition: opacity 1s ease-out;
             backdrop-filter: blur(8px);
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Estilo festivo y grande para el título de inicio */
+        #start-screen h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.8rem;
+            color: #db2777;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
 
         #start-screen.hidden {
             opacity: 0;
-            pointer-events: none; /* Desactiva las interacciones una vez oculto */
+            pointer-events: none;
         }
         
         /* Media Query para pantallas pequeñas */
         @media (max-width: 640px) {
-            .bouquet-image-container { top: 10%; max-width: 300px; }
-            .message-box { bottom: 1%; padding: 1rem; max-width: 95%; }
-            .message-box h2 { font-size: 2rem; }
-            .message-box p { font-size: 0.9rem; }
+            .bouquet-image-container { top: 8%; max-width: 270px; }
+            .message-box { bottom: 1%; padding: 0.8rem 1rem; max-width: 95%; }
+            .message-box h2 { font-size: 1.8rem; }
+            .message-box p { font-size: 0.85rem; }
             
-            #cake-container { top: 40%; left: 50%; transform: translateX(-50%) scale(0.8) rotateY(180deg); }
-            .cake-built { transform: translateX(-50%) scale(0.8) rotateY(0deg) !important; }
-            #cake-layer-1 { width: 200px; height: 40px; }
-            #cake-layer-2 { width: 140px; height: 35px; }
-            #cake-frosting { width: 140px; height: 12px; top: -8px; }
-            #candles-container { width: 120px; top: -28px; }
-            .candle { width: 8px; height: 30px; margin-top: -3px; }
+            #start-screen h1 {
+                font-size: 2.8rem; /* Ajuste para que luzca grande pero sin salirse en celulares */
+            }
+            
+            #cake-container { top: 28%; left: 50%; transform: translateX(-50%) scale(0.75) rotateY(180deg); }
+            .cake-built { transform: translateX(-50%) scale(0.75) rotateY(0deg) !important; }
+            #cake-layer-1 { width: 180px; height: 35px; }
+            #cake-layer-2 { width: 130px; height: 30px; }
+            #cake-frosting { width: 130px; height: 10px; top: -7px; }
+            #candles-container { width: 110px; top: -25px; }
+            .candle { width: 7px; height: 25px; margin-top: -3px; }
             .balloon { width: 40px; height: 50px; }
             
             #start-button {
-                font-size: 1.25rem !important; /* Ajuste para móviles */
-                padding: 1rem 2rem !important;
+                font-size: 1.1rem !important;
+                padding: 0.8rem 1.5rem !important;
             }
         }
     </style>
 </head>
 <body id="body">
-    <!-- El elemento audio debe ser cargado desde una URL pública -->
+    <!-- Audio de fondo -->
     <audio id="background-music" src="cumple.mp3" loop></audio>
 
-    <!-- Pantalla de inicio para permitir que el usuario active la música -->
+    <!-- Pantalla de inicio con título festivo grande -->
     <div id="start-screen">
-        <h1 class="text-4xl font-bold mb-6 text-pink-600 font-['Great_Vibes']">¡Mensaje Especial de Cumpleaños!</h1>
-        <!-- BOTÓN DE INICIO con el corazón -->
-        <button id="start-button" class="px-8 py-4 bg-pink-600 text-white text-2xl font-bold rounded-full shadow-xl hover:bg-pink-700 transition duration-300 transform hover:scale-110 border-4 border-white">
-            ❤️ Para mi amor Graciela ❤️
+        <h1>🎉 ¡Invitación de Cumpleaños! 🎂</h1>
+        <!-- Botón con iconos de pastel -->
+        <button id="start-button" class="px-8 py-4 bg-pink-600 text-white text-2xl font-bold rounded-full shadow-xl hover:bg-pink-700 transition duration-300 transform hover:scale-110 border-4 border-white text-center">
+            🎂 Presiona aquí 🎂
         </button>
-        <p class="mt-4 text-gray-500 text-sm"></p>
+        <p class="mt-4 text-gray-500 text-sm">Toca para abrir la invitación</p>
     </div>
 
     <div class="bouquet-image-container">
-        <!-- Imagen placeholder utilizada para asegurar que el diseño funcione. Reemplaza con tu URL real. -->
-        <img src="tulipan.png" alt="">
+        <img src="tulipan.png" alt="Ramo de flores">
     </div>
     
     <div id="cake-container">
@@ -348,11 +360,18 @@
     </div>
     
     <div class="message-box" id="message-box">
-        <h2 class="font-bold">¡Feliz Cumpleaños!</h2>
-        <p>
-            Te recuerdo que hoy cumples un año más siendo la persona que más amo en esta vida. Cada día a tu lado es un regalo que tanto deseo y no puedo dejar de agradecer a Dios por tenerte conmigo. Te deseo este nuevo año de vida te traiga tanta felicidad, amor y sueños cumplidos que realizaras. Gracias por ser mi compañera, mi apoyo y mi inspiración. ¡Feliz cumpleaños, mi amor! ❤️
+        <h2 class="font-bold">¡Te invito a festejar mis 27 años!</h2>
+        <p style="text-align: left; margin-top: 5px;">
+            🎉 <strong>Fecha:</strong> Viernes 20 de noviembre<br>
+            ⏰ <strong>Hora:</strong> 6:00 PM<br>
+            📍 <strong>Lugar:</strong> <a href="https://maps.app.goo.gl/j5VdeAy9nt1KpPcs6" target="_blank" style="color: #d946ef; text-decoration: underline; font-weight: bold;">Nicolás Bravo Ote y Manuel González JR # 503, Ciudad Victoria, Tamaulipas 87000</a>
         </p>
-        <p class="signature">- Te amo con todo mi Corazón ❤️</p>
+            </a>
+        </p>
+        <p style="margin-top: 8px;">
+            Te espero para celebrar mi fiesta de cumpleaños
+        </p>
+        <p class="signature">- No faltes!!! </p>
     </div>
 
     <script>
@@ -362,7 +381,6 @@
         const startButton = document.getElementById('start-button');
         const music = document.getElementById('background-music');
         
-        // Funciones de Animación existentes
         function showBouquetAndMessage() {
             body.classList.add('bloomed');
         }
@@ -375,7 +393,7 @@
             setTimeout(() => { cakeContainer.classList.add('candles-lit'); }, 2000); 
         }
 
-        // --- Animación de Globos (Mismo código) ---
+        // --- Animación de Globos ---
         const balloonColors = [
             '#FF69B4', '#8A2BE2', '#00FFFF', '#FFD700', '#ADFF2F', 
             '#FF4500', '#9932CC', '#3CB371', '#FF8C00', '#F08080'
@@ -399,10 +417,8 @@
         function startBalloonAnimation() {
             balloonInterval = setInterval(createBalloon, 300); 
         }
-        // --- FIN Animación de Globos ---
 
-
-        // --- Animación de Confeti y Fuegos Artificiales (Mismo código) ---
+        // --- Animación de Confeti y Fuegos Artificiales ---
         let confettiInterval;
         let fireworkInterval;
 
@@ -493,33 +509,18 @@
             setTimeout(launchCelebrationFireworks, 100);
             fireworkInterval = setInterval(launchCelebrationFireworks, 5000);
         }
-        // --- FIN Animación de Partículas ---
 
-
-        // Función que inicia toda la celebración (llamada al hacer clic en el botón)
+        // Función que inicia toda la celebración
         function startCelebrations() {
-            // 1. Oculta la pantalla de inicio
             startScreen.classList.add('hidden');
-            
-            // 2. Inicia la música
-            // Nota: Para que la música funcione, el archivo 'cumple.mp3' debe estar en una URL pública.
             music.play().catch(e => console.error("Error al intentar reproducir el audio:", e));
-
-            // 3. Inicia las animaciones visuales
             showBouquetAndMessage(); 
             startBalloonAnimation();
             startParticleEffects();
             setTimeout(startCakeAnimation, 2500);
         }
 
-        // Asigna el evento al botón de inicio
         startButton.addEventListener('click', startCelebrations);
-
-        window.onload = function() {
-            // El onload solo asegura que el botón está visible.
-        };
     </script>
 </body>
-
 </html>
-
