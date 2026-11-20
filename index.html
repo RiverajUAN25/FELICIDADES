@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación de Cumpleaños</title>
     
-<!-- Importación de Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
+    <!-- Vista previa con foto para WhatsApp y redes sociales -->
+    <meta property="og:title" content="🎉 ¡Feliz cumpleaños AMOR! 🎂" />
+    <meta property="og:description" content="Toca aquí para abrir tu invitación especial. ¡No faltes!" />
+    <meta property="og:image" content="https://riverajuan25.github.io/FELICITACION/AMOR.png" />
+    <meta property="og:url" content="https://riverajuan25.github.io/FELICITACION/" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Importación de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;700&display=swap');
 
@@ -101,7 +108,7 @@
         /* --- Estilos para el Pastel de Cumpleaños --- */
       #cake-container {
             position: absolute;
-            top: 50%; /* <--- ¡Este es el parámetro que debes cambiar! */
+            top: 50%; 
             left: 50%;
             transform: translateX(-50%) scale(0) rotateY(180deg);
             opacity: 0;
@@ -298,19 +305,60 @@
             pointer-events: none;
         }
         
-        /* Media Query para pantallas pequeñas */
+        /* Media Query para pantallas pequeñas (Celulares) */
         @media (max-width: 640px) {
-            .bouquet-image-container { top: 8%; max-width: 270px; }
-            .message-box { bottom: 1%; padding: 0.8rem 1rem; max-width: 95%; }
-            .message-box h2 { font-size: 1.8rem; }
-            .message-box p { font-size: 0.85rem; }
-            
-            #start-screen h1 {
-                font-size: 2.8rem; /* Ajuste para que luzca grande pero sin salirse en celulares */
+            body {
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 15px 10px 30px 10px;
+                overflow-y: auto;
+                min-height: 100dvh;
+            }
+
+            .bouquet-image-container { 
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                max-width: 240px; 
+                margin: 0 auto;
             }
             
-            #cake-container { top: 28%; left: 50%; transform: translateX(-50%) scale(0.75) rotateY(180deg); }
-            .cake-built { transform: translateX(-50%) scale(0.75) rotateY(0deg) !important; }
+            #cake-container { 
+                position: relative;
+                top: auto;
+                bottom: auto;
+                left: auto;
+                transform: scale(0) rotateY(180deg);
+                margin-top: -35px;
+                margin-bottom: -10px;
+            }
+            
+            .cake-built { 
+                transform: scale(0.75) rotateY(0deg) !important; 
+            }
+
+            .message-box { 
+                position: relative;
+                bottom: auto;
+                left: auto;
+                transform: translateY(30px);
+                padding: 0.9rem 1rem; 
+                max-width: 95%; 
+                margin: 0 auto;
+            }
+
+            .bloomed .message-box {
+                transform: translateY(0);
+            }
+
+            .message-box h2 { font-size: 1.7rem; line-height: 1.2; }
+            .message-box p { font-size: 0.85rem; line-height: 1.35; }
+            
+            #start-screen h1 {
+                font-size: 2.8rem;
+            }
+            
             #cake-layer-1 { width: 180px; height: 35px; }
             #cake-layer-2 { width: 130px; height: 30px; }
             #cake-frosting { width: 130px; height: 10px; top: -7px; }
@@ -327,20 +375,20 @@
 </head>
 <body id="body">
     <!-- Audio de fondo -->
-    <audio id="background-music" src="cumple.mp3" loop></audio>
+    <audio id="background-music" src="maña.mp3" loop></audio>
 
     <!-- Pantalla de inicio con título festivo grande -->
     <div id="start-screen">
-        <h1>🎉 ¡Invitación de Cumpleaños! 🎂</h1>
+        <h1>🎉 ¡FELIZ CUMPLEAÑOS MI AMOR! 🎂</h1>
         <!-- Botón con iconos de pastel -->
         <button id="start-button" class="px-8 py-4 bg-pink-600 text-white text-2xl font-bold rounded-full shadow-xl hover:bg-pink-700 transition duration-300 transform hover:scale-110 border-4 border-white text-center">
             🎂 Presiona aquí 🎂
         </button>
-        <p class="mt-4 text-gray-500 text-sm">Toca para abrir la invitación</p>
+        <p class="mt-4 text-gray-500 text-sm">Toca aqui</p>
     </div>
 
     <div class="bouquet-image-container">
-        <img src="tulipan.png" alt="Ramo de flores">
+        <img src="amor.png" alt="Ramo de flores">
     </div>
     
     <div id="cake-container">
@@ -360,18 +408,14 @@
     </div>
     
     <div class="message-box" id="message-box">
-        <h2 class="font-bold">¡Te invito a festejar mis 27 años!</h2>
+        <h2 class="font-bold">¡FELIZ CUMPLEAÑOS!</h2>
         <p style="text-align: left; margin-top: 5px;">
-            🎉 <strong>Fecha:</strong> Viernes 20 de noviembre<br>
-            ⏰ <strong>Hora:</strong> 6:00 PM<br>
-            📍 <strong>Lugar:</strong> <a href="https://maps.app.goo.gl/j5VdeAy9nt1KpPcs6" target="_blank" style="color: #d946ef; text-decoration: underline; font-weight: bold;">Nicolás Bravo Ote y Manuel González JR # 503, Ciudad Victoria, Tamaulipas 87000</a>
+            🎉 Te recuerdo que hoy cumples un año más siendo la persona que más importante en mi vida. Doy gracias por poder estar un año mas de vida contigo. Te deseo este nuevo año de vida te traiga tanta felicidad, amor y sueños cumplidos como la alegría que tú me das a mí cada día. Gracias por ser mi compañera, mi apoyo y mi inspiración. Te amo con todo el corazon, feliz dia mi cielo de corazon ¡Feliz cumpleaños, mi amor! ❤️<br>
+                   </p>
+       
+          
         </p>
-            </a>
-        </p>
-        <p style="margin-top: 8px;">
-            Te espero para celebrar mi fiesta de cumpleaños
-        </p>
-        <p class="signature">- No faltes!!! </p>
+        <p class="signature">- Te amo </p>
     </div>
 
     <script>
